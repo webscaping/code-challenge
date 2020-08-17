@@ -58,6 +58,7 @@ const AppComponent = ({
 
     useEffect(() => {
         if (products) {
+            setPage(1);
             setFilteredProducts(products);
 
             let filterProducts = products;

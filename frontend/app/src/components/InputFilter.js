@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { escapeRegExp, filter } from 'lodash';
 const Label = styled.div`
     display: block;
 `;

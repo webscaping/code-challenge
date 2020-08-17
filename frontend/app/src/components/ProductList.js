@@ -105,7 +105,7 @@ export const ProductList = ({ products, departments, promotions }) => {
                     {getDepartmentName(product)}
                 </Department>
                 <Promotions>
-                    <Header as='h5'>Promotions Available</Header>
+                    <Header as='h5'>{product.relationships.promotions.data.length > 0 ? '' : 'No ' }Promotions Available</Header>
                     {renderPromotions(product)}
                 </Promotions>
             </ListItem>

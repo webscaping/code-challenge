@@ -22,7 +22,7 @@ export const SelectFilter = ({
     handleChange,
     placeholder,
     selectedValue, }) => {
-    if (!objects.length) return;
+    if (!objects.length) return null;
 
     return (
         <div>
