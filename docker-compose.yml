@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+    db:
+        build: ./db
+        volumes: 
+            - trufla_data:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=${DB_USER}
+            - POSTGRES_PASSWORD=${DB_PASSWORD}
+            - POSTGRES_DB=${DB}
+    backend:
+        build: ./backend
+        command: bash -c "rails db:migrate && rails s -b 0.0.0.0 -P /dev/null"
+        volumes:
+            - ./backend:/usr/src/backend
+        ports:
+            - "3000:3000"
+        depends_on:
+            - db
+    frontend:
+        build: ./frontend
+        command: npm start
+        stdin_open: true
+        ports:
+            - "3001:3001"
+        volumes: 
+            - ./frontend/app:/usr/src/frontend
+            - /usr/src/frontend/node_modules
+    
+volumes:
+    trufla_data:
+        external: false
