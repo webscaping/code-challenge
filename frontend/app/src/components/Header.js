@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
+/*
+    Created a header component to be versatile way of handling h#
+    elements and hold the styling created for layout of site.
+*/
+
 const elements = {
     h1: 'h1',
     h2: 'h2',

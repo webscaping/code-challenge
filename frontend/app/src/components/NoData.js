@@ -2,6 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+/*
+    If there's no data to populate display this message.
+    This should have actually been displayed if there were no products coming back from DB and display a different message
+    if filters didn't present any data.
+*/
+
 const MessageContainer = styled.div`
     color: goldenrod;
     text-align: center;

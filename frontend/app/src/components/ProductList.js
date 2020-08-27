@@ -58,6 +58,11 @@ const RegPrice = styled.div`
     font-size: 1.1em;
 `
 
+/*
+    Set up the table then iterate over products and display details.
+    Within displaying the details find the department name and promotions to display
+*/
+
 export const ProductList = ({ products, departments, promotions }) => {
     if (!products.length) {
         return (
@@ -105,7 +110,7 @@ export const ProductList = ({ products, departments, promotions }) => {
                     {getDepartmentName(product)}
                 </Department>
                 <Promotions>
-                    <Header as='h5'>{product.relationships.promotions.data.length > 0 ? '' : 'No ' }Promotions Available</Header>
+                    <Header as='h5'>{product.relationships.promotions.data.length > 0 ? '' : 'No '}Promotions Available</Header>
                     {renderPromotions(product)}
                 </Promotions>
             </ListItem>

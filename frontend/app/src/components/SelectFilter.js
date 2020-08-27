@@ -2,6 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { map } from 'lodash';
 
+/*
+    Put label in here as well as input filter, should have been in a global
+    styled-component page
+
+    Created a reusable select field with label inside container
+*/
+
 const SearchSelect = styled.select`
     border-radius: 4px;
     border: solid 1px lightgray;
@@ -9,7 +16,7 @@ const SearchSelect = styled.select`
     background-color: transparent;
 `;
 
-const Label = styled.div`
+const Label = styled.label`
     display: block;
 `;
 
@@ -27,7 +34,7 @@ export const SelectFilter = ({
     return (
         <div>
             <Label htmlFor={id}>{label}</Label>
-            <SearchSelect onChange={handleChange} value={selectedValue}>
+            <SearchSelect id={id} onChange={handleChange} value={selectedValue}>
                 <option value="0">{placeholder}</option>
                 {map(objects, object => {
                     return <option key={`option_${id}_${object[optionValue]}`} value={object[optionValue]}>{object.attributes[optionName]}</option>

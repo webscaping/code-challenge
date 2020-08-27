@@ -1,6 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-const Label = styled.div`
+
+/* 
+    originally styled label as a styled.div should have been
+    styled.label
+
+    InputFilter created to be an input with label inside a container
+    pre-styled and re-useable.
+*/
+const Label = styled.label`
     display: block;
 `;
 

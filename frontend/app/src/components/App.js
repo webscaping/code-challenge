@@ -13,11 +13,14 @@ import { Paginator } from './Paginator';
 import { InputFilter } from './InputFilter';
 import { SelectFilter } from './SelectFilter';
 import { ClearFilter } from './ClearFilter';
+
+// set menu options in a flex box
 const Options = styled.div`
     display: flex;
     align-items: flex-end;
 `;
 
+// push filters away from paginator to the right
 const Searches = styled.div`
     margin-left: auto;
     display: flex;
@@ -42,6 +45,8 @@ const AppComponent = ({
     const [promotionFilter, setPromotionFilter] = useState(0);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const perPage = 5;
+
+    // create an asynchronous function to fetch data
     const fetchData = async () => {
         setIsLoading(true);
         await fetchProducts();
@@ -50,26 +55,33 @@ const AppComponent = ({
         setIsLoading(false);
     }
 
+    // useEffect function with empty array for second argument to act as ComponentDidMount call
     useEffect(() => {
         fetchData();
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    // If anything changes from inputFilter, departmentFilter, promotionFilter or products;
+    // run this call and filter data
     useEffect(() => {
         if (products) {
             setPage(1);
             setFilteredProducts(products);
 
             let filterProducts = products;
+
+            // Filter results based on value of inputFilter variable
             if (inputFilter.length > 1) {
                 filterProducts = filter(filterProducts, product => includes(product['attributes']['name'].toLowerCase(), inputFilter.toLowerCase()));
             }
 
+            // Filter results based on value of departmentFilter variable
             if (departmentFilter > 0) {
                 filterProducts = filter(filterProducts, ['relationships.department.data.id', departmentFilter]);
             }
 
+            // Filter results based on value of promotionFilter variable
             if (promotionFilter > 0) {
                 filterProducts = filter(filterProducts, product => find(product['relationships']['promotions']['data'], { id: promotionFilter }));
             }
@@ -78,23 +90,28 @@ const AppComponent = ({
         }
     }, [inputFilter, departmentFilter, promotionFilter, products]);
 
+    // Clear filter button to easily reset filter
     const handleClearFilter = () => {
         setInputFilter('');
         setDepartmentFilter(0);
         setPromotionFilter(0);
     }
 
+    // Set inputFilter state variable with value
     const handleInputFilterChange = (e) => {
         setInputFilter(e.target.value);
     }
 
+    // Set handleDepartmentChange state variable with value
     const handleDepartmentChange = (e) => {
         setDepartmentFilter(e.target.value);
     }
 
+    // Set handlePromotionChange state variable with value
     const handlePromotionChange = (e) => {
         setPromotionFilter(e.target.value);
     }
+
 
     return (
         <Container>
