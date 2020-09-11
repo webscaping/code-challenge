@@ -115,7 +115,7 @@ const AppComponent = ({
 
     return (
         <Container>
-            <Header as='h1'>Trufla Code Challenge</Header>
+            <Header as='h1'>Code Challenge</Header>
             <Header as='h3'>Product List</Header>
             {
                 isLoading ? <Spinner /> :

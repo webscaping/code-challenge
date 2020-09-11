@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: <%= ENV['DB'] || 'trufla_db' %>
+  database: <%= ENV['DB'] || 'challenge_db' %>
   username: <%= ENV['DB_USER'] || 'postgres' %>
   password: <%= ENV['DB_PASSWORD'] || 'postgres' %>
   host: db
